@@ -23,7 +23,7 @@ const App = () => {
             method: 'post',
             url: `http://${location.hostname}/getdata`,
             data: {
-                rowcols : rowcols,
+                rowcols: rowcols,
                 username: username,
             },
             withCredentials: true,
@@ -38,27 +38,48 @@ const App = () => {
         });
     };
 
-    const downloadImage = () => {
+    const downloadImage = async () => {
         const result_images = document.querySelector("#result_images");
         const this_width = result_images.offsetWidth;
         const this_height = result_images.offsetHeight;
         console.log(this_width, this_height);
 
-        htmlToImage.toPng(result_images, {
+        const dataUrl = await htmlToImage.toPng(result_images, {
             backgroundColor: 'white',
             width: this_width,
-            height: this_height
-        })
-            .then(function (dataUrl) {
-                const link = document.createElement('a');
-                link.download = 'my-image-name.jpeg';
-                link.href = dataUrl;
-                link.click();
-            })
-            .catch(function (error) {
-                console.error('oops, something went wrong!', error);
-            });
+            height: this_height,
+            pixelRatio: 1,
+        });
 
+        const filename = '2020mostlikedfeedimage.png';
+        const arr = dataUrl.split(',');
+        const mime = arr[0].match(/:(.*?);/)[1];
+        const bstr = atob(arr[1]);
+        let n = bstr.length
+        const u8arr = new Uint8Array(n);
+
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+
+        const downloadimg = new File([u8arr], filename, {type:mime});
+        const Register_FormData = new FormData();
+        Register_FormData.append('downloadimg', downloadimg);
+
+        const uploadimg = await axios({
+            method: 'post',
+            url: `http://${location.hostname}/uploadimg`,
+            data: Register_FormData,
+            headers: {'Content-Type': 'multipart/form-data'},
+            withCredentials: true,
+        });
+
+        if(uploadimg.data.success === true) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = `images/${filename}`;
+            link.click();
+        }
     }
 
     return (<>
@@ -75,7 +96,7 @@ const App = () => {
                     </div>
                     <div>
                         <div>
-                            <Viewicon />
+                            <Viewicon/>
                         </div>
                         <select onChange={(e) => setrowcols(e.target.value)}>
                             <option value={3}>3</option>

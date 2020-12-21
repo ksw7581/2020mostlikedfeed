@@ -88,6 +88,13 @@ response.getdata = async (req, res) => {
 
     }
 
+};
+
+response.uploadimg = (req, res) => {
+    console.log('upload img');
+    res.json({
+        success: true,
+    });
 }
 
 const crawling = (username) => {

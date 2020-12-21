@@ -187,11 +187,11 @@ export const Loading = styled.div`
   }
 `
 export const DownShare = styled.div`
-  width: 220px;
+  width: 260px;
   margin: 20px auto;
 
   ${this} > button {
-    width: 100px;
+    width: 120px;
     height: 40px;
     line-height: 40px;
     font-size: 12px;

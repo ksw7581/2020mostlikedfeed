@@ -1,11 +1,14 @@
 const HOME = '/';
-const GETDATA = '/getdata';
 const TEST = '/test'
+const GETDATA = '/getdata';
+const UPLOADIMG = '/uploadimg';
+
 
 const routes = {
     home: HOME,
     test: TEST,
     getdata: GETDATA,
+    uploadimg : UPLOADIMG,
 }
 
 module.exports = routes;
