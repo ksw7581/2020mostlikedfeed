@@ -39,33 +39,33 @@ const App = () => {
     };
 
     const downloadImage = async () => {
-        const result_images = document.querySelector("#result_images");
+        const result_images = document.querySelector("#downaloadImage");
         const this_width = result_images.offsetWidth;
         const this_height = result_images.offsetHeight;
         console.log(this_width, this_height);
 
-        const dataUrl = await htmlToImage.toPng(result_images, {
+        const dataUrl = await htmlToImage.toJpeg(result_images, {
             backgroundColor: 'white',
             width: this_width,
             height: this_height,
             pixelRatio: 1,
         });
 
-        const filename = '2020mostlikedfeedimage.png';
-        const arr = dataUrl.split(',');
-        const mime = arr[0].match(/:(.*?);/)[1];
-        const bstr = atob(arr[1]);
-        let n = bstr.length
-        const u8arr = new Uint8Array(n);
-
-        while(n--){
-            u8arr[n] = bstr.charCodeAt(n);
+        const filename = '2020mostlikedfeedimage.jpg';
+        let byteString;
+        if (dataUrl.split(',')[0].indexOf('base64') >= 0)
+            byteString = atob(dataUrl.split(',')[1]);
+        else
+            byteString = unescape(dataUrl.split(',')[1]);
+        const mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
+        const ia = new Uint8Array(byteString.length);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
         }
 
-        const downloadimg = new File([u8arr], filename, {type:mime});
+        const downloadimg = new Blob([ia], {type:mimeString})
         const Register_FormData = new FormData();
-        Register_FormData.append('downloadimg', downloadimg);
-
+        Register_FormData.append('downloadimg', downloadimg, filename);
         const uploadimg = await axios({
             method: 'post',
             url: `http://${location.hostname}/uploadimg`,
@@ -119,6 +119,7 @@ const App = () => {
             <div id="result_images">
                 {
                     Data.map((data, index) => {
+                        console.log(data);
                         return (<div key={index}>
                             <img height='100%' width='100%' src={data.node.display_url} alt='image'/>
                             <Like>
@@ -143,6 +144,32 @@ const App = () => {
                 }
             </DownShare>
         </ImageBoard>
+        <div id="downaloadImage" style={{
+            "display" : "inline-block",
+            "width" : `calc(480px * ${Math.sqrt(Data.length)})`
+        }}>
+            {
+                Data.map((data, index) => {
+                    return (<div key={index} style={{
+                        "display" : "inline-block",
+                        "width" : `calc(100% / ${Math.sqrt(Data.length)})`,
+                        "height" : `calc(100% / ${Math.sqrt(Data.length)})`,
+                        "boxSizing" : "border-box",
+                        "padding" : "1%",
+                    }}>
+                        <img style ={{"border-radius" : "5%"}} height='100%' width='100%' src={data.node.display_url} alt='image'/>
+                        <Like>
+                            <div>
+                                <Heart/>
+                            </div>
+                            <div>
+                                {data.node.edge_media_preview_like.count}
+                            </div>
+                        </Like>
+                    </div>);
+                })
+            }
+        </div>
         <Footer/>
     </>);
 }
