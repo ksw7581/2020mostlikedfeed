@@ -4,7 +4,21 @@ import * as htmlToImage from 'html-to-image';
 
 import Header from './header';
 import Footer from './footer';
-import {ImageBoard, Main, Search, Searchicon, Viewicon, Loading, DownShare, Like, Heart} from './style'
+import {
+    ImageBoard,
+    Main,
+    Search,
+    Searchicon,
+    Viewicon,
+    Loading,
+    DownShare,
+    Like,
+    Heart,
+    ShareIcon,
+    KakaoIcon,
+    ImgdownIcon,
+    WhatsappIcon,
+} from './style'
 
 const App = () => {
     const [isDownload, setIsdownload] = useState(false);
@@ -42,7 +56,7 @@ const App = () => {
 
     const onloadImgStck = (index) => {
         setImgStck([...imgstck, index]);
-        if(imgstck.length === (Data.length - 1)) {
+        if (imgstck.length === (Data.length - 1)) {
             downloadImage();
         }
     }
@@ -70,26 +84,25 @@ const App = () => {
             ia[i] = byteString.charCodeAt(i);
         }
 
-        const downloadimg = new Blob([ia], {type:mimeString})
+        const downloadimg = new Blob([ia], {type: mimeString})
         const Register_FormData = new FormData();
         Register_FormData.append('downloadimg', downloadimg, filename);
-        const uploadimg = await axios({
+        axios({
             method: 'post',
             url: `http://${location.hostname}/uploadimg`,
             data: Register_FormData,
             headers: {'Content-Type': 'multipart/form-data'},
             withCredentials: true,
+        }).then((res) => {
+            setIsdownload(false);
+            setImgStck([]);
+            if (res.data.success === true) {
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = `images/${filename}`;
+                link.click();
+            }
         });
-
-        setIsdownload(false);
-        setImgStck([]);
-
-        if(uploadimg.data.success === true) {
-            const link = document.createElement('a');
-            link.download = filename;
-            link.href = `images/${filename}`;
-            link.click();
-        }
     }
 
     return (<>
@@ -122,9 +135,10 @@ const App = () => {
                 </div>
             </Search>
         </Main>
-        <Loading>
-            {isLoading && <img src='./src/loading.gif' alt='loading'/>}
-        </Loading>
+        {isLoading && <Loading>
+            <img src='./src/loading.gif' alt='loading'/>
+            <div>타인의 게시물을 무단으로 게시함을 금합니다.</div>
+        </Loading>}
         <ImageBoard height={Data.length}>
             <div id="result_images">
                 {
@@ -147,36 +161,41 @@ const App = () => {
                 {
                     (Data.length > 0) && <>
                         <button onClick={(e) => {
-                            if(isDownload === false) {
+                            if (isDownload === false) {
                                 setIsdownload(true);
                             }
                         }
-                        }>이미지 저장
+                        }>
+                            <ImgdownIcon />
                         </button>
-                        <button>카카오톡 공유하기</button>
+                        <button>
+                            <ShareIcon />
+                            <KakaoIcon />
+                        </button>
                     </>
                 }
             </DownShare>
         </ImageBoard>
         {
-           isDownload === true && <div id="downaloadImage" style={{
-               "display" : "inline-block",
-               "width" : `calc(480px * ${Math.sqrt(Data.length)})`
-           }}>
-               {
-                   Data.map((data, index) => {
-                       return (<div key={index} style={{
-                           "display" : "inline-block",
-                           "width" : `calc(100% / ${Math.sqrt(Data.length)})`,
-                           "height" : `calc(100% / ${Math.sqrt(Data.length)})`,
-                           "boxSizing" : "border-box",
-                           "padding" : "1%",
-                       }}>
-                           <img style ={{"borderRadius" : "5%"}} height='100%' width='100%' src={data.node.display_url} onLoad={() => onloadImgStck(index)} alt='image'/>
-                       </div>);
-                   })
-               }
-           </div>
+            isDownload === true && <div id="downaloadImage" style={{
+                "display": "inline-block",
+                "width": `calc(480px * ${Math.sqrt(Data.length)})`
+            }}>
+                {
+                    Data.map((data, index) => {
+                        return (<div key={index} style={{
+                            "display": "inline-block",
+                            "width": `calc(100% / ${Math.sqrt(Data.length)})`,
+                            "height": `calc(100% / ${Math.sqrt(Data.length)})`,
+                            "boxSizing": "border-box",
+                            "padding": "1%",
+                        }}>
+                            <img style={{"borderRadius": "5%"}} height='100%' width='100%' src={data.node.display_url}
+                                 onLoad={() => onloadImgStck(index)} alt='image'/>
+                        </div>);
+                    })
+                }
+            </div>
         }
         <Footer/>
     </>);
