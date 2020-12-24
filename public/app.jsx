@@ -7,6 +7,8 @@ import Footer from './footer';
 import {ImageBoard, Main, Search, Searchicon, Viewicon, Loading, DownShare, Like, Heart} from './style'
 
 const App = () => {
+    const [isDownload, setIsdownload] = useState(false);
+    const [imgstck, setImgStck] = useState([]);
     const [username, setUsername] = useState('');
     const [rowcols, setrowcols] = useState(3);
     const [isLoading, setLoading] = useState(false);
@@ -38,12 +40,17 @@ const App = () => {
         });
     };
 
+    const onloadImgStck = (index) => {
+        setImgStck([...imgstck, index]);
+        if(imgstck.length === (Data.length - 1)) {
+            downloadImage();
+        }
+    }
+
     const downloadImage = async () => {
         const result_images = document.querySelector("#downaloadImage");
         const this_width = result_images.offsetWidth;
         const this_height = result_images.offsetHeight;
-        console.log(this_width, this_height);
-
         const dataUrl = await htmlToImage.toJpeg(result_images, {
             backgroundColor: 'white',
             width: this_width,
@@ -73,6 +80,9 @@ const App = () => {
             headers: {'Content-Type': 'multipart/form-data'},
             withCredentials: true,
         });
+
+        setIsdownload(false);
+        setImgStck([]);
 
         if(uploadimg.data.success === true) {
             const link = document.createElement('a');
@@ -119,7 +129,6 @@ const App = () => {
             <div id="result_images">
                 {
                     Data.map((data, index) => {
-                        console.log(data);
                         return (<div key={index}>
                             <img height='100%' width='100%' src={data.node.display_url} alt='image'/>
                             <Like>
@@ -137,39 +146,38 @@ const App = () => {
             <DownShare>
                 {
                     (Data.length > 0) && <>
-                        <button onClick={(e) => downloadImage()}>이미지 저장
+                        <button onClick={(e) => {
+                            if(isDownload === false) {
+                                setIsdownload(true);
+                            }
+                        }
+                        }>이미지 저장
                         </button>
                         <button>카카오톡 공유하기</button>
                     </>
                 }
             </DownShare>
         </ImageBoard>
-        <div id="downaloadImage" style={{
-            "display" : "inline-block",
-            "width" : `calc(480px * ${Math.sqrt(Data.length)})`
-        }}>
-            {
-                Data.map((data, index) => {
-                    return (<div key={index} style={{
-                        "display" : "inline-block",
-                        "width" : `calc(100% / ${Math.sqrt(Data.length)})`,
-                        "height" : `calc(100% / ${Math.sqrt(Data.length)})`,
-                        "boxSizing" : "border-box",
-                        "padding" : "1%",
-                    }}>
-                        <img style ={{"border-radius" : "5%"}} height='100%' width='100%' src={data.node.display_url} alt='image'/>
-                        <Like>
-                            <div>
-                                <Heart/>
-                            </div>
-                            <div>
-                                {data.node.edge_media_preview_like.count}
-                            </div>
-                        </Like>
-                    </div>);
-                })
-            }
-        </div>
+        {
+           isDownload === true && <div id="downaloadImage" style={{
+               "display" : "inline-block",
+               "width" : `calc(480px * ${Math.sqrt(Data.length)})`
+           }}>
+               {
+                   Data.map((data, index) => {
+                       return (<div key={index} style={{
+                           "display" : "inline-block",
+                           "width" : `calc(100% / ${Math.sqrt(Data.length)})`,
+                           "height" : `calc(100% / ${Math.sqrt(Data.length)})`,
+                           "boxSizing" : "border-box",
+                           "padding" : "1%",
+                       }}>
+                           <img style ={{"borderRadius" : "5%"}} height='100%' width='100%' src={data.node.display_url} onLoad={() => onloadImgStck(index)} alt='image'/>
+                       </div>);
+                   })
+               }
+           </div>
+        }
         <Footer/>
     </>);
 }
