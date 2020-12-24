@@ -95,7 +95,7 @@
       <workItem from="1608547653972" duration="5795000" />
       <workItem from="1608557924542" duration="1119000" />
       <workItem from="1608566023933" duration="2721000" />
-      <workItem from="1608813894667" duration="9962000" />
+      <workItem from="1608813894667" duration="10639000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -188,7 +188,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608825721388</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="크롤링 endpoint 변경">
+      <created>1608827082008</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608827082008</updated>
+    </task>
+    <task id="LOCAL-00015" summary="다시 롤백">
+      <created>1608827209048</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608827209048</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,6 +218,8 @@
     <MESSAGE value="웹팩 경로 재수정, &#10;아이콘 위치 변경" />
     <MESSAGE value="헤더 토큰 추가" />
     <MESSAGE value="헤더 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="헤더 수정" />
+    <MESSAGE value="크롤링 endpoint 변경" />
+    <MESSAGE value="다시 롤백" />
+    <option name="LAST_COMMIT_MESSAGE" value="다시 롤백" />
   </component>
 </project>
