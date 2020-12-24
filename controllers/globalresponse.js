@@ -100,12 +100,7 @@ const crawling = (username) => {
         method: 'get',
         url: `https://www.instagram.com/web/search/topsearch/?query=${username}`,
         headers: {
-            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"3.36.5.48\\": 17858}:1ksSgE:X9fE9W39eKIsXW47PUKIhqersjs"',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Host': 'www.instagram.com',
-            'Upgrade-Insecure-Requests': 1,
+            cookie: 'mid=XJV-6wALAAEkY9SnZKUoyIBEF-E6; fbm_124024574287414=base_domain=.instagram.com; csrftoken=iMaxYF5YkByj613WyJM00KfLK6FOpmnh; ds_user_id=1923848070; sessionid=1923848070%3AsI6XncJq5wYjPy%3A18; shbid=3630; shbts=1555722465.374888; rur=VLL; urlgen="{\"183.98.137.226\": 4766}:1hI5TJ:C8bkIlPzBRpvtyW6QrlZXCDwqiU"',
         },
         withCredentials: true,
     });
@@ -124,12 +119,7 @@ const getuserfeeds = (user_id, end_cursor) => {
             variables: variables,
         },
         headers: {
-            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"3.36.5.48\\": 17858}:1ksSgE:X9fE9W39eKIsXW47PUKIhqersjs"',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-            'Accept-Encoding': 'gzip, deflate, br',
-            'Connection': 'keep-alive',
-            'Host': 'www.instagram.com',
-            'Upgrade-Insecure-Requests': 1,
+            cookie: 'mid=XJV-6wALAAEkY9SnZKUoyIBEF-E6; fbm_124024574287414=base_domain=.instagram.com; csrftoken=iMaxYF5YkByj613WyJM00KfLK6FOpmnh; ds_user_id=1923848070; sessionid=1923848070%3AsI6XncJq5wYjPy%3A18; shbid=3630; shbts=1555722465.374888; rur=VLL; urlgen="{\"183.98.137.226\": 4766}:1hI5TJ:C8bkIlPzBRpvtyW6QrlZXCDwqiU"',
         },
         withCredentials: true,
     })
