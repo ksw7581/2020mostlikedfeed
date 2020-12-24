@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="029ae9ec-f115-4638-a479-6bd06c45177c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/globalresponse.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/globalresponse.js" afterDir="false" />
-    </list>
+    <list default="true" id="029ae9ec-f115-4638-a479-6bd06c45177c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -95,7 +92,7 @@
       <workItem from="1608547653972" duration="5795000" />
       <workItem from="1608557924542" duration="1119000" />
       <workItem from="1608566023933" duration="2721000" />
-      <workItem from="1608813894667" duration="7226000" />
+      <workItem from="1608813894667" duration="7579000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -153,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608821386305</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="헤더 토큰 추가">
+      <created>1608823315539</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1608823315539</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +171,7 @@
     <MESSAGE value="OG태그, 앱 아이콘 생성" />
     <MESSAGE value="개발 끝 카카오톡 공유기능 만들기" />
     <MESSAGE value="웹팩 경로 재수정, &#10;아이콘 위치 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="웹팩 경로 재수정, &#10;아이콘 위치 변경" />
+    <MESSAGE value="헤더 토큰 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="헤더 토큰 추가" />
   </component>
 </project>
