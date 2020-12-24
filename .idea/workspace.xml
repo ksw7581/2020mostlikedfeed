@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="029ae9ec-f115-4638-a479-6bd06c45177c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/style.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,7 @@
       <workItem from="1608547653972" duration="5795000" />
       <workItem from="1608557924542" duration="1119000" />
       <workItem from="1608566023933" duration="2721000" />
-      <workItem from="1608813894667" duration="4722000" />
+      <workItem from="1608813894667" duration="5348000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -130,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608817509384</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="개발 끝 카카오톡 공유기능 만들기">
+      <created>1608819071405</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1608819071405</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +148,7 @@
     <MESSAGE value="이미지 다운로드 방식 재 개선&#10;&#10;다운로드 눌렀을 때 만 다운로드용 이미지 생성" />
     <MESSAGE value="프론트엔드 디자인 끝;&#10;&#10;남은 작업 : 카카오톡 공유 기능" />
     <MESSAGE value="OG태그, 앱 아이콘 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="OG태그, 앱 아이콘 생성" />
+    <MESSAGE value="개발 끝 카카오톡 공유기능 만들기" />
+    <option name="LAST_COMMIT_MESSAGE" value="개발 끝 카카오톡 공유기능 만들기" />
   </component>
 </project>
