@@ -29,8 +29,8 @@ response.test = (req, res) => {
 response.getdata = async (req, res) => {
     const username = req.body.username;
     const rowcols = req.body.rowcols;
-    console.log(rowcols);
     const result = await crawling(username);
+    console.log(result.data);
     if (result.data.users.length === 0) {
         res.json({
             success: false,
@@ -72,8 +72,6 @@ response.getdata = async (req, res) => {
         }
 
         const mostliked_images = sortbyMostliked(user_images, rowcols);
-        console.log(mostliked_images.length);
-        console.log(rowcols * rowcols);
         if (mostliked_images.length < (rowcols * rowcols)) {
             res.json({
                 success: false,
@@ -101,6 +99,9 @@ const crawling = (username) => {
     return axios({
         method: 'get',
         url: `https://www.instagram.com/web/search/topsearch/?query=${username}`,
+        headers: {
+            cookie: 'ig_did=7779B22C-07CB-49D6-9BF4-6FF79B670A9F; csrftoken=IeejgFkqM4PQmiOjWudGyjj69Xn8cKbt; mid=X-SwLwAEAAGfJdU4Iy9UNpwOzVUu; ig_nrcb=1',
+        },
         withCredentials: true,
     });
 };
@@ -116,6 +117,9 @@ const getuserfeeds = (user_id, end_cursor) => {
         params: {
             query_hash: '003056d32c2554def87228bc3fd9668a',
             variables: variables,
+        },
+        headers: {
+            cookie: 'ig_did=7779B22C-07CB-49D6-9BF4-6FF79B670A9F; csrftoken=IeejgFkqM4PQmiOjWudGyjj69Xn8cKbt; mid=X-SwLwAEAAGfJdU4Iy9UNpwOzVUu; ig_nrcb=1',
         },
         withCredentials: true,
     })
