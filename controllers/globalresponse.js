@@ -100,7 +100,7 @@ const crawling = (username) => {
         method: 'get',
         url: `https://www.instagram.com/web/search/topsearch/?query=${username}`,
         headers: {
-            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"124.56.158.191\\": 17858}:1ksSY2:G4ew1sF4zzX2YM-gBQ2NzFwyzFw"',
+            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"3.36.5.48\\": 17858}:1ksSgE:X9fE9W39eKIsXW47PUKIhqersjs"',
             'Accept' : '*/*',
             'Accept-Encoding' : 'gzip, deflate, br',
             'Connection' : 'keep-alive',
@@ -122,7 +122,7 @@ const getuserfeeds = (user_id, end_cursor) => {
             variables: variables,
         },
         headers: {
-            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"124.56.158.191\\": 17858}:1ksSY2:G4ew1sF4zzX2YM-gBQ2NzFwyzFw"',
+            'cookie': 'ig_did=DBA6C3B9-A2E7-4CB6-B87C-73DE93397AA9; csrftoken=Z6YSpwgoL5dBXDaPG6gORrhOCaFMGxEh; mid=X9RiQAAEAAG75EeCercU829JmxrF; ig_nrcb=1; urlgen="{\\"3.36.5.48\\": 17858}:1ksSY2:G4ew1sF4zzX2YM-gBQ2NzFwyzFw"',
             'Accept' : '*/*',
             'Accept-Encoding' : 'gzip, deflate, br',
             'Connection' : 'keep-alive',
