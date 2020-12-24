@@ -30,19 +30,22 @@ response.getdata = async (req, res) => {
     const username = req.body.username;
     const rowcols = req.body.rowcols;
     const result = await crawling(username);
-    console.log(result.data);
-    if (result.data.users.length === 0) {
+
+    console.log(result);
+
+    if (Object.keys(result).length === 0) {
         res.json({
             success: false,
             message: '검색결과가 존재하지 않습니다.'
         });
-    } else if (result.data.users[0].user.is_private === true) {
+    } else if (result.data.graphql.user.is_private === true) {
         res.json({
             success: false,
             message: '비공개 사용자입니다. 결과를 공유하시려면 인스타 계정을 공개로 변경해주세요.'
         });
     } else {
-        const user_id = result.data.users[0].user.pk
+
+        const user_id = result.data.graphql.user.id;
         let feeds = await getuserfeeds(user_id, '');
         let has_next_page = feeds.data.data.user.edge_owner_to_timeline_media.page_info.has_next_page;
         let edges = feeds.data.data.user.edge_owner_to_timeline_media.edges;
@@ -98,7 +101,7 @@ response.uploadimg = (req, res) => {
 const crawling = (username) => {
     return axios({
         method: 'get',
-        url: `https://www.instagram.com/web/search/topsearch/?query=${username}`,
+        url: `https://www.instagram.com/${username}/?__a=1`,
         headers: {
             cookie: 'mid=XJV-6wALAAEkY9SnZKUoyIBEF-E6; fbm_124024574287414=base_domain=.instagram.com; csrftoken=iMaxYF5YkByj613WyJM00KfLK6FOpmnh; ds_user_id=1923848070; sessionid=1923848070%3AsI6XncJq5wYjPy%3A18; shbid=3630; shbts=1555722465.374888; rur=VLL; urlgen="{\"183.98.137.226\": 4766}:1hI5TJ:C8bkIlPzBRpvtyW6QrlZXCDwqiU"',
         },
