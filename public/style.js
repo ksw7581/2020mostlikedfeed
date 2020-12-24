@@ -148,7 +148,6 @@ export const Search = styled.div`
 
     ${this} > div:nth-child(2) {
       width: calc(40% - 30px);
-      background-color: #63cdda;
       border-radius: 3px;
       display: flex;
 
@@ -157,7 +156,8 @@ export const Search = styled.div`
         width: 30px;
         max-width: 36px;
         line-height: 24px;
-
+        background-color: #63cdda;
+        
         ${this} > svg {
           margin-left: 3px;
           width: 24px;
@@ -171,6 +171,10 @@ export const Search = styled.div`
         border-radius: 2px;
         text-align: center;
         width: calc(100% - 30px);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background: url("data:image/svg+xml;utf8,<svg fill='skyblue' viewBox='0 0 140 140' width='24' height='24' xmlns='http://www.w3.org/2000/svg'><g><path d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z'/></g></svg>") no-repeat;
+        background-position: right 5px top 50%;
       }
     }
 
