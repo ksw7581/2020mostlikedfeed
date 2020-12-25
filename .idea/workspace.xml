@@ -98,7 +98,7 @@
       <workItem from="1608547653972" duration="5795000" />
       <workItem from="1608557924542" duration="1119000" />
       <workItem from="1608566023933" duration="2721000" />
-      <workItem from="1608813894667" duration="17508000" />
+      <workItem from="1608813894667" duration="17957000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -233,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608866294473</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="구글 애널리틱스 추가">
+      <created>1608868278124</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1608868278124</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +261,7 @@
     <MESSAGE value="쿠키 변경" />
     <MESSAGE value="puppeteer insta test" />
     <MESSAGE value="카카오 링크 공유기능 연동" />
-    <option name="LAST_COMMIT_MESSAGE" value="카카오 링크 공유기능 연동" />
+    <MESSAGE value="구글 애널리틱스 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="구글 애널리틱스 추가" />
   </component>
 </project>
