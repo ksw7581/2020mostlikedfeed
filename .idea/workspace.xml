@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="029ae9ec-f115-4638-a479-6bd06c45177c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/globalresponse.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/globalresponse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/app.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/footer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +103,7 @@
       <workItem from="1608566023933" duration="2721000" />
       <workItem from="1608813894667" duration="18775000" />
       <workItem from="1608892549334" duration="1000" />
-      <workItem from="1608896377159" duration="487000" />
+      <workItem from="1608896377159" duration="936000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -266,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608884800944</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="이미지 별로 이름 다르게 해서 사용자에게 다운로드">
+      <created>1608896980861</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1608896980861</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +298,7 @@
     <MESSAGE value="구글 애드센스 추가" />
     <MESSAGE value="이미지 다운로드 방식 개선" />
     <MESSAGE value="카카오톡 공유 경로 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="카카오톡 공유 경로 수정" />
+    <MESSAGE value="이미지 별로 이름 다르게 해서 사용자에게 다운로드" />
+    <option name="LAST_COMMIT_MESSAGE" value="이미지 별로 이름 다르게 해서 사용자에게 다운로드" />
   </component>
 </project>

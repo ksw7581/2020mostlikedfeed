@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as htmlToImage from 'html-to-image';
-import {nanoid} from 'nanoid'
 
 import Header from './header';
 import Footer from './footer';
@@ -20,6 +19,8 @@ import {
     ImgdownIcon,
     WhatsappIcon,
 } from './style'
+
+let insta_id = '';
 
 const App = () => {
     const [isDownload, setIsdownload] = useState(false);
@@ -49,10 +50,11 @@ const App = () => {
             },
             withCredentials: true,
         }).then(res => {
-            // setUsername('');
             setLoading(false);
             if (res.data.success === true) {
                 setData(res.data.user_images);
+                insta_id = res.data.username;
+                console.log(insta_id);
             } else {
                 alert(res.data.message);
             }
@@ -112,8 +114,8 @@ const App = () => {
             height: this_height,
             pixelRatio: 1,
         }).then((dataurl) => {
-            const imgid = nanoid(10);
-            const filename = '2020mostlikedfeedimage_' + imgid + '.jpg';
+            console.log(insta_id);
+            const filename = '2020mostlikedfeedimage_' + insta_id + '.jpg';
             let byteString;
             if (dataurl.split(',')[0].indexOf('base64') >= 0)
                 byteString = atob(dataurl.split(',')[1]);

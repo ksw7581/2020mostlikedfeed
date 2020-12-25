@@ -81,6 +81,7 @@ response.getdata = async (req, res) => {
             res.json({
                 success: true,
                 user_images: mostliked_images,
+                username : username,
             });
         }
 
