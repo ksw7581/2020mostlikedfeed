@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="029ae9ec-f115-4638-a479-6bd06c45177c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/globalresponse.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/globalresponse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/app.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/public/app.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/globalrouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/routers/globalrouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +104,7 @@
       <workItem from="1608566023933" duration="2721000" />
       <workItem from="1608813894667" duration="18775000" />
       <workItem from="1608892549334" duration="1000" />
-      <workItem from="1608896377159" duration="1924000" />
+      <workItem from="1608896377159" duration="4232000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1608521551019</created>
@@ -277,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608897358601</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="whats app 공유 완료">
+      <created>1608898415916</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1608898415916</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +315,7 @@
     <MESSAGE value="카카오톡 공유 경로 수정" />
     <MESSAGE value="이미지 별로 이름 다르게 해서 사용자에게 다운로드" />
     <MESSAGE value="무작위 코드 -&gt; 아이디로 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="무작위 코드 -&gt; 아이디로 변경" />
+    <MESSAGE value="whats app 공유 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="whats app 공유 완료" />
   </component>
 </project>

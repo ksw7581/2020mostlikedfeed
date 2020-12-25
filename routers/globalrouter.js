@@ -6,10 +6,10 @@ const response = require('../controllers/globalresponse');
 
 router.get(routes.home, response.home);
 
-router.get(routes.test, response.test);
-
 router.post(routes.getdata, response.getdata);
 
 router.post(routes.uploadimg, middleware.cpUpload, response.uploadimg);
+
+router.get(routes.isforeign, response.isforeign)
 
 module.exports = router;

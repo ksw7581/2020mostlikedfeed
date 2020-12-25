@@ -24,7 +24,7 @@ let insta_id = '';
 
 const App = () => {
 
-    const [isForeign, setIsForeign] = useState(true);
+    const [isForeign, setIsForeign] = useState(false);
     const [isDownload, setIsdownload] = useState(false);
     const [imgstck, setImgStck] = useState([]);
     const [username, setUsername] = useState('');
@@ -34,11 +34,22 @@ const App = () => {
 
     useEffect(() => {
         window.Kakao.init('f3de5be88a845cb7e710558e41695b31');
+        axios({
+            method: 'get',
+            url: `http://${location.hostname}/isforeign`,
+            withCredentials: true,
+        }).then(res => {
+            setIsForeign(res.data.isforeign);
+        });
     }, []);
 
     const getdata = () => {
         if (username === '') {
-            alert('인스타 아이디를 입력해주세요.');
+            if (isForeign === false) {
+                alert('인스타 아이디를 입력해주세요.');
+            } else {
+                alert('Please insert your instagram username.');
+            }
             return;
         }
         setLoading(true);
@@ -49,6 +60,7 @@ const App = () => {
             data: {
                 rowcols: rowcols,
                 username: username,
+                isForeign: isForeign,
             },
             withCredentials: true,
         }).then(res => {
@@ -159,10 +171,16 @@ const App = () => {
         <Header/>
         <Main>
             <div>
-                2020 한 해 가장 좋아요를 많이 받은 게시물을 보여드립니다.
+                {
+                    isForeign === false ? '2020 한 해 가장 좋아요를 많이 받은 게시물을 보여드립니다.' : 'Mostlikedfeed is show your the best feeds in 2020!'
+                }
             </div>
             <Search>
-                <div>아이디를 입력하세요.</div>
+                <div>
+                    {
+                        isForeign === false ? '아이디를 입력하세요.' : 'Insert your instagram username.'
+                    }
+                </div>
                 <div>
                     <div>
                         <input type={'text'} onChange={(e) => setUsername(e.target.value)}/>
@@ -187,7 +205,13 @@ const App = () => {
         </Main>
         {isLoading && <Loading>
             <img src='./src/loading.gif' alt='loading'/>
-            <div>mostlikedfeed는 타인의 게시물을 무단으로 게시하는 행위에 대한 책임을 일절 지지 않습니다.</div>
+            <div>
+                {
+                    isForeign === false ?
+                        'mostlikedfeed는 타인의 게시물을 무단으로 게시하는 행위에 대한 책임을 일절 지지 않습니다.' :
+                        "This service is not take any responsibility for unauthorized posting of other people's posts."
+                }
+            </div>
         </Loading>}
         <ImageBoard height={Data.length}>
             <div id="result_images">

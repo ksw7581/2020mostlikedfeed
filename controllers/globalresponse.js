@@ -12,21 +12,22 @@ response.home = (req, res) => {
     res.sendFile(path.join(__dirname, '../public/index.html'));
 };
 
-response.test = (req, res) => {
-    console.log('Headers: ' + JSON.stringify(req.headers));
-    console.log('IP: ' + JSON.stringify(req.ip));
+response.isforeign = (req, res) => {
     const geo = geoip.lookup(req.ip);
-    console.log("Browser: " + req.headers["user-agent"]);
-    console.log("Language: " + req.headers["accept-language"]);
-    console.log("Country: " + (geo ? geo.country : "Unknown"));
-    console.log("Region: " + (geo ? geo.region : "Unknown"));
-    console.log(geo);
-    res.status(200);
-    res.header("Content-Type", 'application/json');
-    res.end(JSON.stringify({status: "OK"}));
+    const Country = (geo ? geo.country : "Unknown");
+    if(Country === "Unknown" || Country === "KR") {
+        res.json({
+            isforeign : false,
+        });
+    } else {
+        res.json({
+            isforeign : true,
+        });
+    }
 };
 
 response.getdata = async (req, res) => {
+    const isForeign = req.body.isForeign;
     const username = req.body.username;
     const rowcols = req.body.rowcols;
     const result = await crawling(username);
@@ -34,12 +35,12 @@ response.getdata = async (req, res) => {
     if (result.data.users.length === 0) {
         res.json({
             success: false,
-            message: '검색결과가 존재하지 않습니다.'
+            message: isForeign === false ? '검색결과가 존재하지 않습니다.' : 'Search results do not exist.',
         });
     } else if (result.data.users[0].user.is_private === true) {
         res.json({
             success: false,
-            message: '비공개 사용자입니다. 결과를 공유하시려면 인스타 계정을 공개로 변경해주세요.'
+            message: isForeign === false ? '비공개 사용자입니다. 결과를 공유하시려면 인스타 계정을 공개로 변경해주세요.' : 'Your account is private. If you want to share result. please change public your account.',
         });
     } else {
         const user_id = result.data.users[0].user.pk
@@ -75,7 +76,7 @@ response.getdata = async (req, res) => {
         if (mostliked_images.length < (rowcols * rowcols)) {
             res.json({
                 success: false,
-                message: '결과화면에 가지고 올 이미지의 개수가 충분하지 않습니다.',
+                message: isForeign === false ? '결과화면에 가지고 올 이미지의 개수가 충분하지 않습니다.' : 'your feeds is not enough required images.',
             });
         } else {
             res.json({
