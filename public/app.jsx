@@ -96,6 +96,7 @@ const App = () => {
 
     const downloadImage = async () => {
         const result_images = document.querySelector("#downaloadImage");
+
         const this_width = result_images.offsetWidth;
         const this_height = result_images.offsetHeight;
         const dataUrl = await htmlToImage.toJpeg(result_images, {
@@ -105,37 +106,50 @@ const App = () => {
             pixelRatio: 1,
         });
 
-        const filename = '2020mostlikedfeedimage.jpg';
-        let byteString;
-        if (dataUrl.split(',')[0].indexOf('base64') >= 0)
-            byteString = atob(dataUrl.split(',')[1]);
-        else
-            byteString = unescape(dataUrl.split(',')[1]);
-        const mimeString = dataUrl.split(',')[0].split(':')[1].split(';')[0];
-        const ia = new Uint8Array(byteString.length);
-        for (let i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-        }
+        console.log(dataUrl.length);
 
-        const downloadimg = new Blob([ia], {type: mimeString})
-        const Register_FormData = new FormData();
-        Register_FormData.append('downloadimg', downloadimg, filename);
-        axios({
-            method: 'post',
-            url: `http://${location.hostname}/uploadimg`,
-            data: Register_FormData,
-            headers: {'Content-Type': 'multipart/form-data'},
-            withCredentials: true,
-        }).then((res) => {
-            setIsdownload(false);
-            setImgStck([]);
-            if (res.data.success === true) {
-                const link = document.createElement('a');
-                link.download = filename;
-                link.href = `images/${filename}`;
-                link.click();
+        const dataUrl2 = htmlToImage.toJpeg(result_images, {
+            backgroundColor: 'white',
+            width: this_width,
+            height: this_height,
+            pixelRatio: 1,
+        }).then((dataurl) => {
+
+            console.log(dataurl.length);
+
+            const filename = '2020mostlikedfeedimage.jpg';
+            let byteString;
+            if (dataurl.split(',')[0].indexOf('base64') >= 0)
+                byteString = atob(dataurl.split(',')[1]);
+            else
+                byteString = unescape(dataurl.split(',')[1]);
+            const mimeString = dataurl.split(',')[0].split(':')[1].split(';')[0];
+            const ia = new Uint8Array(byteString.length);
+            for (let i = 0; i < byteString.length; i++) {
+                ia[i] = byteString.charCodeAt(i);
             }
+
+            const downloadimg = new Blob([ia], {type: mimeString})
+            const Register_FormData = new FormData();
+            Register_FormData.append('downloadimg', downloadimg, filename);
+            axios({
+                method: 'post',
+                url: `http://${location.hostname}/uploadimg`,
+                data: Register_FormData,
+                headers: {'Content-Type': 'multipart/form-data'},
+                withCredentials: true,
+            }).then((res) => {
+                setIsdownload(false);
+                setImgStck([]);
+                if (res.data.success === true) {
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = `images/${filename}`;
+                    link.click();
+                }
+            });
         });
+
     }
 
     return (<>
