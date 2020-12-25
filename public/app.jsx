@@ -67,16 +67,16 @@ const App = () => {
                 imageUrl:
                     'https://swf-bucket.s3.ap-northeast-2.amazonaws.com/contentimg.png',
                 link: {
-                    mobileWebUrl: 'https://2020mostlikedfeed.com',
-                    webUrl: 'https://2020mostlikedfeed.com',
+                    mobileWebUrl: 'http://2020mostlikedfeed.com',
+                    webUrl: 'http://2020mostlikedfeed.com',
                 },
             },
             buttons: [
                 {
                     title: '웹으로 보기',
                     link: {
-                        mobileWebUrl: 'https://2020mostlikedfeed.com',
-                        webUrl: 'https://2020mostlikedfeed.com',
+                        mobileWebUrl: 'http://2020mostlikedfeed.com',
+                        webUrl: 'http://2020mostlikedfeed.com',
                     },
                 },
             ],
