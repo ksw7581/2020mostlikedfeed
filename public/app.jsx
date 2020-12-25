@@ -23,6 +23,8 @@ import {
 let insta_id = '';
 
 const App = () => {
+
+    const [isForeign, setIsForeign] = useState(true);
     const [isDownload, setIsdownload] = useState(false);
     const [imgstck, setImgStck] = useState([]);
     const [username, setUsername] = useState('');
@@ -87,7 +89,10 @@ const App = () => {
     };
 
     const ShareWhatsApp = () => {
-
+        window.open(
+            `https://wa.me/?text= 2020mostlikedfeed - get your best instagram feeds in 2020 💫 'http://2020mostlikedfeed.com'`,
+            '_blank' // <- This is what makes it open in a new window.
+        );
     };
 
     const onloadImgStck = (index) => {
@@ -213,10 +218,15 @@ const App = () => {
                         }>
                             <ImgdownIcon/>
                         </button>
-                        <button onClick={() => ShareKakao()}>
-                            <ShareIcon/>
-                            <KakaoIcon/>
-                        </button>
+                        {
+                            isForeign === false ? (<button onClick={() => ShareKakao()}>
+                                <ShareIcon/>
+                                <KakaoIcon/>
+                            </button>) : (<button onClick={() => ShareWhatsApp()}>
+                                <ShareIcon/>
+                                <WhatsappIcon/>
+                            </button>)
+                        }
                     </>
                 }
             </DownShare>
