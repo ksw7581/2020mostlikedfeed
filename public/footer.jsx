@@ -20,7 +20,7 @@ const footer = () => {
                 <div>Copyright ⓒ 2020 All rights reserved.</div>
                 <div>
                     <div>Developed by </div>
-                    <a href="">
+                    <a href="https://www.instagram.com/sangwon_f/">
                         <InstaIcon />
                         <div>James Kim</div>
                     </a>

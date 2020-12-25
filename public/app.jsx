@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as htmlToImage from 'html-to-image';
+import {nanoid} from 'nanoid'
 
 import Header from './header';
 import Footer from './footer';
@@ -96,7 +97,6 @@ const App = () => {
 
     const downloadImage = async () => {
         const result_images = document.querySelector("#downaloadImage");
-
         const this_width = result_images.offsetWidth;
         const this_height = result_images.offsetHeight;
         const dataUrl = await htmlToImage.toJpeg(result_images, {
@@ -106,18 +106,14 @@ const App = () => {
             pixelRatio: 1,
         });
 
-        console.log(dataUrl.length);
-
         const dataUrl2 = htmlToImage.toJpeg(result_images, {
             backgroundColor: 'white',
             width: this_width,
             height: this_height,
             pixelRatio: 1,
         }).then((dataurl) => {
-
-            console.log(dataurl.length);
-
-            const filename = '2020mostlikedfeedimage.jpg';
+            const imgid = nanoid(10);
+            const filename = '2020mostlikedfeedimage_' + imgid + '.jpg';
             let byteString;
             if (dataurl.split(',')[0].indexOf('base64') >= 0)
                 byteString = atob(dataurl.split(',')[1]);
@@ -213,11 +209,11 @@ const App = () => {
                             }
                         }
                         }>
-                            <ImgdownIcon />
+                            <ImgdownIcon/>
                         </button>
                         <button onClick={() => ShareKakao()}>
-                            <ShareIcon />
-                            <KakaoIcon />
+                            <ShareIcon/>
+                            <KakaoIcon/>
                         </button>
                     </>
                 }
