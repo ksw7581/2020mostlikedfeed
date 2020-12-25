@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import * as htmlToImage from 'html-to-image';
 
@@ -28,6 +28,10 @@ const App = () => {
     const [isLoading, setLoading] = useState(false);
     const [Data, setData] = useState([]);
 
+    useEffect(() => {
+        window.Kakao.init('f3de5be88a845cb7e710558e41695b31');
+    }, []);
+
     const getdata = () => {
         if (username === '') {
             alert('인스타 아이디를 입력해주세요.');
@@ -52,6 +56,35 @@ const App = () => {
                 alert(res.data.message);
             }
         });
+    };
+
+    const ShareKakao = () => {
+        Kakao.Link.sendDefault({
+            objectType: 'feed',
+            content: {
+                title: '2020mostlikedfeed',
+                description: '2020 여러분의 가장 핫했던 게시물을 보여드립니다.',
+                imageUrl:
+                    'https://swf-bucket.s3.ap-northeast-2.amazonaws.com/contentimg.png',
+                link: {
+                    mobileWebUrl: 'https://2020mostlikedfeed.com',
+                    webUrl: 'https://2020mostlikedfeed.com',
+                },
+            },
+            buttons: [
+                {
+                    title: '웹으로 보기',
+                    link: {
+                        mobileWebUrl: 'https://2020mostlikedfeed.com',
+                        webUrl: 'https://2020mostlikedfeed.com',
+                    },
+                },
+            ],
+        })
+    };
+
+    const ShareWhatsApp = () => {
+
     };
 
     const onloadImgStck = (index) => {
@@ -137,7 +170,7 @@ const App = () => {
         </Main>
         {isLoading && <Loading>
             <img src='./src/loading.gif' alt='loading'/>
-            <div>타인의 게시물을 무단으로 게시함을 금합니다.</div>
+            <div>mostlikedfeed는 타인의 게시물을 무단으로 게시하는 행위에 대한 책임을 일절 지지 않습니다.</div>
         </Loading>}
         <ImageBoard height={Data.length}>
             <div id="result_images">
@@ -168,7 +201,7 @@ const App = () => {
                         }>
                             <ImgdownIcon />
                         </button>
-                        <button>
+                        <button onClick={() => ShareKakao()}>
                             <ShareIcon />
                             <KakaoIcon />
                         </button>
